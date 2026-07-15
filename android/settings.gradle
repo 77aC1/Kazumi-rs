@@ -1,0 +1,5 @@
+rootProject.name = 'kazumi'
+
+include ':app'
+
+apply from: new File(flutterProjectRootDir, 'packages/flutter_tools/gradle/app_plugin_loader.gradle')
