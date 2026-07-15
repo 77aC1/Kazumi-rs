@@ -1,0 +1,58 @@
+[package]
+name = "rkazumi-core"
+version = "0.1.0"
+edition = "2021"
+description = "Kazumi 番剧采集 Rust 核心引擎"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+scraper = "0.21"
+reqwest = { version = "0.12", features = ["json", "rustls-tls"], default-features = false }
+tokio = { version = "1", features = ["full"] }
+url = "2"
+chrono = "0.4"
+regex = "1"
+md-5 = "0.10"
+sha2 = "0.10"
+hex = "0.4"
+base64 = "0.22"
+rand = "0.8"
+uuid = { version = "1", features = ["v4"] }
+roxmltree = "0.20"
+urlencoding = "2.1"
+encoding_rs = "0.8"
+compression-codecs = "0.4"
+anyhow = "1"
+thiserror = "2"
+
+# TLS
+rustls = "0.23"
+webpki-roots = "1"
+
+# HTTP middleware
+http = "1"
+reqwest-middleware = "0.3"
+reqwest-retry = "0.5"
+tower = "0.5"
+tower-http = { version = "0.6", features = ["decompression-gzip", "decompression-brotli", "set-header"] }
+tokio-util = "0.7"
+cookie = "0.18"
+cookie_store = "0.22"
+retry-policies = "0.3"
+
+# LRU cache
+lru = "0.12"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"
+
+[build-dependencies]
+anyhow = "1"
